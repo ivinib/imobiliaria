@@ -40,27 +40,29 @@ public class ImobiliariaApplication implements CommandLineRunner {
 
         imobiliariaList = Convert.convertJson();
 
-        Cidade cidade = new Cidade();
-        Estado estado = new Estado();
-        Imovel imovel = new Imovel();
-        Localizacao localizacao = new Localizacao();
-        VendaImovel vendaImovel = new VendaImovel();
-
-        System.out.println(imobiliariaList);
-
         for (Imobiliaria imobiliaria : imobiliariaList){
+
+            Cidade cidade = new Cidade();
+            Estado estado = new Estado();
+            Imovel imovel = new Imovel();
+            Localizacao localizacao = new Localizacao();
+            VendaImovel vendaImovel = new VendaImovel();
 
             if (imobiliaria.getUf() != null){
                 estado.setUf(imobiliaria.getUf());
+
+
                 Estado e = new Estado();
                 e = estadoRepository.findByUf(estado.getUf());
-                if (e == null)
+                if (e == null) {
                     estadoRepository.save(estado);
+                }
             }
+
 
             if(imobiliaria.getCidade() != null){
                 cidade.setCidade(imobiliaria.getCidade());
-                cidade.setCep(imobiliaria.getCep());
+
                 Cidade c = new Cidade();
                 c = cidadeRepository.findByCidade(cidade.getCidade());
                 if(c == null){
@@ -70,60 +72,17 @@ public class ImobiliariaApplication implements CommandLineRunner {
                 }
             }
 
-            if (imobiliaria.getCategoria() != null ||
-                imobiliaria.getStatus() != null ||
-                imobiliaria.getAreaTotal() != null ||
-                imobiliaria.getAreaPrivativa() != null ||
-                imobiliaria.getIptu() != null ||
-                imobiliaria.getCondominio() != null ||
-                imobiliaria.getPlanta() != null ||
-                imobiliaria.getDependencia() != null ||
-                imobiliaria.getSacada() != null ||
-                imobiliaria.getPortaria() != null ||
-                imobiliaria.getElevador() != null ||
-                imobiliaria.getChurrasqueira() != null ||
-                imobiliaria.getDormitorios() != null ||
-                imobiliaria.getSuites() != null ||
-                imobiliaria.getVagas() != null ||
-                imobiliaria.getBanheiros() != null ||
-                imobiliaria.getDescricao() != null ||
-                imobiliaria.getValorVenda() != null){
-
-                imovel.setCategoria(imobiliaria.getCategoria());
-                imovel.setStatus(imobiliaria.getStatus());
-                imovel.setAreaTotal(imobiliaria.getAreaTotal());
-                imovel.setAreaPrivativa(imobiliaria.getAreaPrivativa());
-                imovel.setIptu(imobiliaria.getIptu());
-                imovel.setCondominio(imobiliaria.getCondominio());
-                imovel.setPlanta(imobiliaria.getPlanta());
-                imovel.setDependencia(imobiliaria.getDependencia());
-                imovel.setSacada(imobiliaria.getSacada());
-                imovel.setPortaria(imobiliaria.getPortaria());
-                imovel.setElevador(imobiliaria.getElevador());
-                imovel.setChurrasqueira(imobiliaria.getChurrasqueira());
-                imovel.setDormitorios(imobiliaria.getDormitorios());
-                imovel.setSuite(imobiliaria.getSuites());
-                imovel.setVagas(imobiliaria.getVagas());
-                imovel.setBanheiros(imobiliaria.getBanheiros());
-                imovel.setDescricao(imobiliaria.getDescricao());
-                imovel.setValorVenda(imobiliaria.getValorVenda());
-
-                Imovel i = new Imovel();
-                i = imovelRepository.findByCategoria(imovel.getCategoria());
-
-                if (i == null)
-                    imovelRepository.save(i);
-            }
-
             if (imobiliaria.getEndereco() != null ||
                 imobiliaria.getNumero() != null ||
                 imobiliaria.getComplemento() != null ||
-                imobiliaria.getBairro() != null ){
+                imobiliaria.getBairro() != null ||
+                imobiliaria.getCep() != null){
 
                 localizacao.setEndereco(imobiliaria.getEndereco());
                 localizacao.setNumero(imobiliaria.getNumero());
                 localizacao.setComplemento(imobiliaria.getComplemento());
                 localizacao.setBairro(imobiliaria.getBairro());
+                localizacao.setCep(imobiliaria.getCep());
 
                 Localizacao l = new Localizacao();
                 l = localizacaoRepository.findByEnderecoAndNumero(localizacao.getEndereco(),localizacao.getNumero());
@@ -137,11 +96,68 @@ public class ImobiliariaApplication implements CommandLineRunner {
                 }
             }
 
+            if (imobiliaria.getCategoria() != null ||
+                imobiliaria.getStatus() != null ||
+                imobiliaria.getArea_total() != null ||
+                imobiliaria.getArea_privativa() != null ||
+                imobiliaria.getIptu() != null ||
+                imobiliaria.getCondominio() != null ||
+                imobiliaria.getPlanta() != null ||
+                imobiliaria.getDependencia() != null ||
+                imobiliaria.getSacada() != null ||
+                imobiliaria.getPortaria() != null ||
+                imobiliaria.getElevador() != null ||
+                imobiliaria.getChurrasqueira() != null ||
+                imobiliaria.getDormitorios() != null ||
+                imobiliaria.getSuites() != null ||
+                imobiliaria.getVagas() != null ||
+                imobiliaria.getBanheiros() != null ||
+                imobiliaria.getDescricao() != null ){
+
+                imovel.setCategoria(imobiliaria.getCategoria());
+                imovel.setStatus(imobiliaria.getStatus());
+                imovel.setAreaTotal(imobiliaria.getArea_total());
+                imovel.setAreaPrivativa(imobiliaria.getArea_privativa());
+                imovel.setIptu(imobiliaria.getIptu());
+                imovel.setCondominio(imobiliaria.getCondominio());
+                imovel.setPlanta(imobiliaria.getPlanta());
+                imovel.setDependencia(imobiliaria.getDependencia());
+                imovel.setSacada(imobiliaria.getSacada());
+                imovel.setPortaria(imobiliaria.getPortaria());
+                imovel.setElevador(imobiliaria.getElevador());
+                imovel.setChurrasqueira(imobiliaria.getChurrasqueira());
+                imovel.setDormitorios(imobiliaria.getDormitorios());
+                imovel.setSuite(imobiliaria.getSuites());
+                imovel.setVagas(imobiliaria.getVagas());
+                imovel.setBanheiros(imobiliaria.getBanheiros());
+                imovel.setDescricao(imobiliaria.getDescricao());
+
+                if (imobiliaria.getValor_venda() == "null"){
+                    imovel.setValorVenda(imobiliaria.getValor_venda());
+                }else{
+                    imovel.setValorVenda("0");
+                }
+
+                if (imobiliaria.getValor_aluguel() == "null"){
+                    imovel.setValorAluguel(imobiliaria.getValor_aluguel());
+                }else{
+                    imovel.setValorAluguel("0");
+                }
+
+                Imovel i = new Imovel();
+
+                i = imovelRepository.findByCategoriaAndAreaTotal(imovel.getCategoria(),imovel.getAreaTotal());
+
+                if (i == null){
+                   imovelRepository.save(imovel);
+                }
+            }
+
             if (imobiliaria.getId() != null){
                 vendaImovel.setIdJSON(imobiliaria.getId());
 
                 Imovel i = new Imovel();
-                i = imovelRepository.findByCategoria(imovel.getCategoria());
+                i = imovelRepository.findByCategoriaAndAreaTotal(imovel.getCategoria(), imovel.getAreaTotal());
 
                 Localizacao l = new Localizacao();
                 l = localizacaoRepository.findByEnderecoAndNumero(localizacao.getEndereco(),localizacao.getNumero());
@@ -151,12 +167,6 @@ public class ImobiliariaApplication implements CommandLineRunner {
 
                 vendaImovelRepository.save(vendaImovel);
             }
-
-            cidade = null;
-            estado = null;
-            imovel = null;
-            localizacao = null;
-            vendaImovel = null;
         }
     }
 }

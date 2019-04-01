@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ImovelRepository extends JpaRepository<Imovel,Integer> {
-    Imovel findByCategoria(String categoria);
+    Imovel findByCategoriaAndAreaTotal(String categoria, String area);
 }

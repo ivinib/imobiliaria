@@ -13,7 +13,7 @@ public class Estado implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_estado")
     private Integer idEstado;
 
@@ -23,13 +23,21 @@ public class Estado implements Serializable {
     @OneToMany(mappedBy = "estado")
     private List<Cidade> cidadeList = new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn(name = "id_pais")
+    private Pais pais;
+
     public Estado() {
     }
 
-    public Estado(Integer idEstado, String uf, List<Cidade> cidadeList) {
-        this.idEstado = idEstado;
+    public Estado(String uf, List<Cidade> cidadeList, Pais pais) {
         this.uf = uf;
         this.cidadeList = cidadeList;
+        this.pais = pais;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     public Integer getIdEstado() {
@@ -56,12 +64,21 @@ public class Estado implements Serializable {
         this.cidadeList = cidadeList;
     }
 
+    public Pais getPais() {
+        return pais;
+    }
+
+    public void setPais(Pais pais) {
+        this.pais = pais;
+    }
+
     @Override
     public String toString() {
         return "Estado{" +
                 "idEstado=" + idEstado +
                 ", uf='" + uf + '\'' +
                 ", cidadeList=" + cidadeList +
+                ", pais=" + pais +
                 '}';
     }
 }

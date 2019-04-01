@@ -1,5 +1,9 @@
 package br.edu.uniopet.imobiliaria.model;
 
+import org.hibernate.annotations.CollectionType;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.Query;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +13,8 @@ import java.util.List;
 public class Imovel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idMovel")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_imovel")
     private Integer idImovel;
 
     @Column(name = "categoria")
@@ -61,11 +65,14 @@ public class Imovel {
     @Column(name = "banheiros")
     private String banheiros;
 
-    @Column(name = "descricao")
+    @Column(name = "descricao", length = 1100)
     private String descricao;
 
     @Column(name = "valor_venda")
     private String valorVenda;
+
+    @Column(name = "valor_aluguel")
+    private String valorAluguel;
 
     @OneToMany(mappedBy = "imovel")
     private List<VendaImovel> vendaImovelList = new ArrayList<>();
@@ -73,8 +80,8 @@ public class Imovel {
     public Imovel() {
     }
 
-    public Imovel(Integer idImovel, String categoria, String status, String areaTotal, String areaPrivativa, String iptu, String condominio, String planta, String dependencia, String sacada, String portaria, String elevador, String churrasqueira, String dormitorios, String suite, String vagas, String banheiros, String descricao, String valorVenda, List<VendaImovel> vendaImovelList) {
-        this.idImovel = idImovel;
+
+    public Imovel(String categoria, String status, String areaTotal, String areaPrivativa, String iptu, String condominio, String planta, String dependencia, String sacada, String portaria, String elevador, String churrasqueira, String dormitorios, String suite, String vagas, String banheiros, String descricao, String valorVenda, String valorAluguel, List<VendaImovel> vendaImovelList) {
         this.categoria = categoria;
         this.status = status;
         this.areaTotal = areaTotal;
@@ -93,6 +100,7 @@ public class Imovel {
         this.banheiros = banheiros;
         this.descricao = descricao;
         this.valorVenda = valorVenda;
+        this.valorAluguel = valorAluguel;
         this.vendaImovelList = vendaImovelList;
     }
 
@@ -248,11 +256,46 @@ public class Imovel {
         this.valorVenda = valorVenda;
     }
 
+    public String getValorAluguel() {
+        return valorAluguel;
+    }
+
+    public void setValorAluguel(String valorAluguel) {
+        this.valorAluguel = valorAluguel;
+    }
+
     public List<VendaImovel> getVendaImovelList() {
         return vendaImovelList;
     }
 
     public void setVendaImovelList(List<VendaImovel> vendaImovelList) {
         this.vendaImovelList = vendaImovelList;
+    }
+
+    @Override
+    public String toString() {
+        return "Imovel{" +
+                "idImovel=" + idImovel +
+                ", categoria='" + categoria + '\'' +
+                ", status='" + status + '\'' +
+                ", areaTotal='" + areaTotal + '\'' +
+                ", areaPrivativa='" + areaPrivativa + '\'' +
+                ", iptu='" + iptu + '\'' +
+                ", condominio='" + condominio + '\'' +
+                ", planta='" + planta + '\'' +
+                ", dependencia='" + dependencia + '\'' +
+                ", sacada='" + sacada + '\'' +
+                ", portaria='" + portaria + '\'' +
+                ", elevador='" + elevador + '\'' +
+                ", churrasqueira='" + churrasqueira + '\'' +
+                ", dormitorios='" + dormitorios + '\'' +
+                ", suite='" + suite + '\'' +
+                ", vagas='" + vagas + '\'' +
+                ", banheiros='" + banheiros + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", valorVenda='" + valorVenda + '\'' +
+                ", valorAluguel='" + valorAluguel + '\'' +
+                ", vendaImovelList=" + vendaImovelList +
+                '}';
     }
 }

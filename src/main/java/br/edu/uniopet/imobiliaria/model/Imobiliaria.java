@@ -2,9 +2,9 @@ package br.edu.uniopet.imobiliaria.model;
 
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.List;
 
-@Entity
 public class Imobiliaria {
 
     private Integer id;
@@ -13,8 +13,8 @@ public class Imobiliaria {
     private String uf;
     private String bairro;
     private String status;
-    private String areaTotal;
-    private String areaPrivativa;
+    private String area_total;
+    private String area_privativa;
     private String iptu;
     private String condominio;
     private String planta;
@@ -34,24 +34,25 @@ public class Imobiliaria {
     private String descricao;
     private String latitude;
     private String longitude;
-    private String valorVenda;
-    private String mostrarMapa;
-    private String imagemPrincipal;
+    private String valor_venda;
+    private String valor_aluguel;
+    private String mostrar_mapa;
+    private String imagem_principal;
     private List<String> imagens;
 
 
     public Imobiliaria() {
     }
 
-    public Imobiliaria(Integer id, String categoria,String cidade, String uf, String bairro, String status, String areaTotal, String areaPrivativa, String iptu, String condominio, String planta, String dependencia, String sacada, String portaria, String elevador, String churrasqueira, String dormitorios, String suites, String vagas, String banheiros, String cep, String endereco, String numero, String complemento, String descricao, String latitude, String longitude, String valorVenda, String mostrarMapa, String imagemPrincipal, List<String> imagens) {
+    public Imobiliaria(Integer id, String categoria, String cidade, String uf, String bairro, String status, String area_total, String area_privativa, String iptu, String condominio, String planta, String dependencia, String sacada, String portaria, String elevador, String churrasqueira, String dormitorios, String suites, String vagas, String banheiros, String cep, String endereco, String numero, String complemento, String descricao, String latitude, String longitude, String valor_venda, String valor_aluguel, String mostrar_mapa, String imagem_principal, List<String> imagens) {
         this.id = id;
         this.categoria = categoria;
         this.cidade = cidade;
         this.uf = uf;
         this.bairro = bairro;
         this.status = status;
-        this.areaTotal = areaTotal;
-        this.areaPrivativa = areaPrivativa;
+        this.area_total = area_total;
+        this.area_privativa = area_privativa;
         this.iptu = iptu;
         this.condominio = condominio;
         this.planta = planta;
@@ -71,9 +72,10 @@ public class Imobiliaria {
         this.descricao = descricao;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.valorVenda = valorVenda;
-        this.mostrarMapa = mostrarMapa;
-        this.imagemPrincipal = imagemPrincipal;
+        this.valor_venda = valor_venda;
+        this.valor_aluguel = valor_aluguel;
+        this.mostrar_mapa = mostrar_mapa;
+        this.imagem_principal = imagem_principal;
         this.imagens = imagens;
     }
 
@@ -91,6 +93,14 @@ public class Imobiliaria {
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
     public String getUf() {
@@ -117,20 +127,20 @@ public class Imobiliaria {
         this.status = status;
     }
 
-    public String getAreaTotal() {
-        return areaTotal;
+    public String getArea_total() {
+        return area_total;
     }
 
-    public void setAreaTotal(String areaTotal) {
-        this.areaTotal = areaTotal;
+    public void setArea_total(String area_total) {
+        this.area_total = area_total;
     }
 
-    public String getAreaPrivativa() {
-        return areaPrivativa;
+    public String getArea_privativa() {
+        return area_privativa;
     }
 
-    public void setAreaPrivativa(String areaPrivativa) {
-        this.areaPrivativa = areaPrivativa;
+    public void setArea_privativa(String area_privativa) {
+        this.area_privativa = area_privativa;
     }
 
     public String getIptu() {
@@ -285,28 +295,36 @@ public class Imobiliaria {
         this.longitude = longitude;
     }
 
-    public String getValorVenda() {
-        return valorVenda;
+    public String getValor_venda() {
+        return valor_venda;
     }
 
-    public void setValorVenda(String valorVenda) {
-        this.valorVenda = valorVenda;
+    public void setValor_venda(String valor_venda) {
+        this.valor_venda = valor_venda;
     }
 
-    public String getMostrarMapa() {
-        return mostrarMapa;
+    public String getValor_aluguel() {
+        return valor_aluguel;
     }
 
-    public void setMostrarMapa(String mostrarMapa) {
-        this.mostrarMapa = mostrarMapa;
+    public void setValor_aluguel(String valor_aluguel) {
+        this.valor_aluguel = valor_aluguel;
     }
 
-    public String getImagemPrincipal() {
-        return imagemPrincipal;
+    public String getMostrar_mapa() {
+        return mostrar_mapa;
     }
 
-    public void setImagemPrincipal(String imagemPrincipal) {
-        this.imagemPrincipal = imagemPrincipal;
+    public void setMostrar_mapa(String mostrar_mapa) {
+        this.mostrar_mapa = mostrar_mapa;
+    }
+
+    public String getImagem_principal() {
+        return imagem_principal;
+    }
+
+    public void setImagem_principal(String imagem_principal) {
+        this.imagem_principal = imagem_principal;
     }
 
     public List<String> getImagens() {
@@ -322,11 +340,12 @@ public class Imobiliaria {
         return "Imobiliaria{" +
                 "id=" + id +
                 ", categoria='" + categoria + '\'' +
+                ", cidade='" + cidade + '\'' +
                 ", uf='" + uf + '\'' +
                 ", bairro='" + bairro + '\'' +
                 ", status='" + status + '\'' +
-                ", areaTotal='" + areaTotal + '\'' +
-                ", areaPrivativa='" + areaPrivativa + '\'' +
+                ", area_total='" + area_total + '\'' +
+                ", area_privativa='" + area_privativa + '\'' +
                 ", iptu='" + iptu + '\'' +
                 ", condominio='" + condominio + '\'' +
                 ", planta='" + planta + '\'' +
@@ -335,29 +354,22 @@ public class Imobiliaria {
                 ", portaria='" + portaria + '\'' +
                 ", elevador='" + elevador + '\'' +
                 ", churrasqueira='" + churrasqueira + '\'' +
-                ", dormitorios=" + dormitorios +
-                ", suites=" + suites +
-                ", vagas=" + vagas +
-                ", banheiros=" + banheiros +
+                ", dormitorios='" + dormitorios + '\'' +
+                ", suites='" + suites + '\'' +
+                ", vagas='" + vagas + '\'' +
+                ", banheiros='" + banheiros + '\'' +
                 ", cep='" + cep + '\'' +
                 ", endereco='" + endereco + '\'' +
-                ", numero=" + numero +
+                ", numero='" + numero + '\'' +
                 ", complemento='" + complemento + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", latitude='" + latitude + '\'' +
                 ", longitude='" + longitude + '\'' +
-                ", valorVenda='" + valorVenda + '\'' +
-                ", mostrarMapa='" + mostrarMapa + '\'' +
-                ", imagemPrincipal='" + imagemPrincipal + '\'' +
+                ", valor_venda='" + valor_venda + '\'' +
+                ", valor_aluguel='" + valor_aluguel + '\'' +
+                ", mostrar_mapa='" + mostrar_mapa + '\'' +
+                ", imagem_principal='" + imagem_principal + '\'' +
                 ", imagens=" + imagens +
                 '}';
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
     }
 }

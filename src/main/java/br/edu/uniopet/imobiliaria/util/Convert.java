@@ -23,11 +23,10 @@ public class Convert {
         JsonReader reader;
 
         try {
-            reader = new JsonReader(new FileReader("imobiliaria.json"));
+            reader = new JsonReader(new FileReader("/home/ivinib/Documents/Windows7/Trabalho2/imobiliaria.json"));
 
             imobiliariaList = gson.fromJson(reader,IMOBILIARIA_TYPE);
 
-            System.out.printf(String.valueOf(imobiliariaList));
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

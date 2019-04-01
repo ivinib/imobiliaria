@@ -12,18 +12,15 @@ public class Cidade  implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_cidade")
     private Integer idCidade;
 
     @Column(name = "cidade")
     private String cidade;
 
-    @Column(name = "cep")
-    private String cep;
-
     @ManyToOne
-    @JoinColumn(name = "idEstado")
+    @JoinColumn(name = "id_estado")
     private Estado estado;
 
     @OneToMany(mappedBy = "cidade")
@@ -32,10 +29,9 @@ public class Cidade  implements Serializable {
     public Cidade() {
     }
 
-    public Cidade(Integer id, String cidade, String cep, Estado estado, List<Localizacao> localizacaoList) {
+    public Cidade(Integer id, String cidade, Estado estado, List<Localizacao> localizacaoList) {
         this.idCidade = id;
         this.cidade = cidade;
-        this.cep = cep;
         this.estado = estado;
         this.localizacaoList = localizacaoList;
     }
@@ -54,14 +50,6 @@ public class Cidade  implements Serializable {
 
     public void setCidade(String cidade) {
         this.cidade = cidade;
-    }
-
-    public String getCep() {
-        return cep;
-    }
-
-    public void setCep(String cep) {
-        this.cep = cep;
     }
 
     public Estado getEstado() {
@@ -93,7 +81,6 @@ public class Cidade  implements Serializable {
         return "Cidade{" +
                 "idCidade=" + idCidade +
                 ", cidade='" + cidade + '\'' +
-                ", cep='" + cep + '\'' +
                 ", estado=" + estado +
                 ", localizacaoList=" + localizacaoList +
                 '}';

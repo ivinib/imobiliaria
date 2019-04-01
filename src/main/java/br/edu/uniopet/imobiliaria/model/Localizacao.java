@@ -12,7 +12,7 @@ public class Localizacao implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idLocalizacao")
     private Integer idLocalizacao;
 
@@ -28,6 +28,15 @@ public class Localizacao implements Serializable {
     @Column(name = "bairro")
     private String bairro;
 
+    @Column(name = "cep")
+    private String cep;
+
+    @Column(name = "latitude")
+    private String latitude;
+
+    @Column(name = "longitude")
+    private String longitude;
+
     @ManyToOne
     @JoinColumn(name = "id_cidade")
     private Cidade cidade;
@@ -38,22 +47,28 @@ public class Localizacao implements Serializable {
     public Localizacao() {
     }
 
-    public Localizacao(Integer id, String endereco, String numero, String complemento, String bairro, Cidade cidade,List<VendaImovel> vendaImovelList) {
-        this.idLocalizacao = id;
+    public Localizacao(String endereco, String numero, String complemento, String bairro, String cep, String latitude, String longitude, Cidade cidade, List<VendaImovel> vendaImovelList) {
         this.endereco = endereco;
         this.numero = numero;
         this.complemento = complemento;
         this.bairro = bairro;
+        this.cep = cep;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.cidade = cidade;
         this.vendaImovelList = vendaImovelList;
     }
 
-    public Integer getId() {
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Integer getIdLocalizacao() {
         return idLocalizacao;
     }
 
-    public void setId(Integer id) {
-        this.idLocalizacao = id;
+    public void setIdLocalizacao(Integer idLocalizacao) {
+        this.idLocalizacao = idLocalizacao;
     }
 
     public String getEndereco() {
@@ -88,6 +103,30 @@ public class Localizacao implements Serializable {
         this.bairro = bairro;
     }
 
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
     public Cidade getCidade() {
         return cidade;
     }
@@ -107,11 +146,14 @@ public class Localizacao implements Serializable {
     @Override
     public String toString() {
         return "Localizacao{" +
-                "id=" + idLocalizacao +
+                "idLocalizacao=" + idLocalizacao +
                 ", endereco='" + endereco + '\'' +
                 ", numero='" + numero + '\'' +
                 ", complemento='" + complemento + '\'' +
                 ", bairro='" + bairro + '\'' +
+                ", cep='" + cep + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", longitude='" + longitude + '\'' +
                 ", cidade=" + cidade +
                 ", vendaImovelList=" + vendaImovelList +
                 '}';
