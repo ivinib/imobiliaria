@@ -7,4 +7,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LocalizacaoRepository extends JpaRepository<Localizacao, Integer> {
     Localizacao findByEnderecoAndNumero(String endereco, String numero);
+
+    Localizacao findByLatitudeAndLongitude(String latitude, String longitude);
+
+    Localizacao findByEnderecoAndAndBairro(String endereco, String bairro);
 }

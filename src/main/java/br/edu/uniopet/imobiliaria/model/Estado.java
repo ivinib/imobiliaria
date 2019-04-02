@@ -2,15 +2,12 @@ package br.edu.uniopet.imobiliaria.model;
 
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "estado")
-public class Estado implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class Estado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,11 +32,6 @@ public class Estado implements Serializable {
         this.cidadeList = cidadeList;
         this.pais = pais;
     }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
     public Integer getIdEstado() {
         return idEstado;
     }

@@ -1,15 +1,12 @@
 package br.edu.uniopet.imobiliaria.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "localizacao")
-public class Localizacao implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class Localizacao{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,10 +54,6 @@ public class Localizacao implements Serializable {
         this.longitude = longitude;
         this.cidade = cidade;
         this.vendaImovelList = vendaImovelList;
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
     }
 
     public Integer getIdLocalizacao() {

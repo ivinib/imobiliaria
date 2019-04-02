@@ -4,13 +4,9 @@ package br.edu.uniopet.imobiliaria.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.io.Serializable;
-
 @Entity
 @Table(name = "venda_imovel")
-public class VendaImovel implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class VendaImovel  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,10 +49,6 @@ public class VendaImovel implements Serializable {
         this.cliente = cliente;
         this.pagamento = pagamento;
         this.tempo = tempo;
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
     }
 
     public Integer getIdVenda() {

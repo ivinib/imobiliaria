@@ -1,15 +1,13 @@
 package br.edu.uniopet.imobiliaria.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "cidade")
-public class Cidade  implements Serializable {
+public class Cidade {
 
-    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
