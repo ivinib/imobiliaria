@@ -23,7 +23,9 @@ public class Convert {
         JsonReader reader;
 
         try {
-            reader = new JsonReader(new FileReader("/home/ivinib/Documents/Windows7/Trabalho2/imobiliaria.json"));
+            //reader = new JsonReader(new FileReader("/home/ivinib/Documents/Windows7/Trabalho2/imobiliaria.json"));
+
+            reader = new JsonReader(new FileReader("src/main/resources/json/imobiliaria.json"));
 
             imobiliariaList = gson.fromJson(reader,IMOBILIARIA_TYPE);
 
