@@ -10,4 +10,4 @@ Passos para testar o programa
 
 4- User Name é: root e não tem senha
 
- 
+ O modelo da base está em: scr/main/resources
