@@ -73,15 +73,19 @@ public class ImobiliariaApplication implements CommandLineRunner {
             }
 
             if (imobiliaria.getEndereco() != null ||
-                imobiliaria.getNumero() != null ||
-                imobiliaria.getComplemento() != null ||
-                imobiliaria.getBairro() != null ||
-                imobiliaria.getCep() != null){
+                    imobiliaria.getNumero() != null ||
+                    imobiliaria.getComplemento() != null ||
+                    imobiliaria.getBairro() != null ||
+                    imobiliaria.getLatitude() != null ||
+                    imobiliaria.getLongitude() != null ||
+                    imobiliaria.getCep() != null){
 
                 localizacao.setEndereco(imobiliaria.getEndereco());
                 localizacao.setNumero(imobiliaria.getNumero());
                 localizacao.setComplemento(imobiliaria.getComplemento());
                 localizacao.setBairro(imobiliaria.getBairro());
+                localizacao.setLatitude(imobiliaria.getLatitude());
+                localizacao.setLongitude(imobiliaria.getLongitude());
                 localizacao.setCep(imobiliaria.getCep());
 
                 Localizacao l = new Localizacao();
